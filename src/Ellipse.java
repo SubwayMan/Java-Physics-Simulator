@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Ellipse extends Shape {
+public class Ellipse extends ShapeStruct {
 
     int diameter;
 

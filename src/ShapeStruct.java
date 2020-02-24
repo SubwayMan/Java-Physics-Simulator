@@ -1,5 +1,5 @@
 import java.awt.*;
-public abstract class Shape {
+public abstract class ShapeStruct {
 
     public int xMomentum;
     public int yMomentum;
@@ -9,13 +9,13 @@ public abstract class Shape {
     public int height;
     public Color col;
 
-    public Shape(int x, int y, int width, int height, Color col){
+    public ShapeStruct(int x, int y, int width, int height, Color col){
 
         this(x, y, width, height, col, 0, 0);
 
     }
 
-    public Shape(int x, int y, int width, int height, Color col, int xMomentum, int yMomentum) {
+    public ShapeStruct(int x, int y, int width, int height, Color col, int xMomentum, int yMomentum) {
 
         this.x = x;
         this.y = y;
