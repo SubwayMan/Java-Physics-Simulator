@@ -5,7 +5,7 @@ public class AnimationTest {
 
 
     int dimension = 600;
-    static JFrame fr = new JFrame("ballz");
+    static JFrame fr;
 
 
 
@@ -23,28 +23,35 @@ public class AnimationTest {
 
     public void go() {
 
-        JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 600);
-        frame.setResizable(false);
-        frame.setVisible(true);
+        fr = new JFrame("ballz");;
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.setSize((int)(dimension * (double)(4/3)), dimension);
+        fr.setResizable(false);
+        fr.setVisible(true);
 
 
 
-        circleDrawer[] drawPanels = new circleDrawer[1];
+        circleDrawer[] drawPanels = new circleDrawer[2];
         drawPanels[0] = new circleDrawer(Color.cyan, 30, 30, -2, 1);
-//        drawPanels[1] = new circleDrawer(Color.MAGENTA, 400, 400, -1, -1);
+        drawPanels[1] = new circleDrawer(Color.MAGENTA, 400, 400, -1, -1);
+        backgroundDrawer b = new backgroundDrawer();
+        fr.getContentPane().add(b);
         for (circleDrawer drawPanel : drawPanels) {
-            frame.getContentPane().add(drawPanel);
+            fr.getContentPane().add(drawPanel);
+//            System.out.println("tally");
         }
 
 
 
+
         while (true) {
+            b.repaint();
 
             for (circleDrawer drawPanel : drawPanels) {
                 drawPanel.repaint();
+
             }
+
             try {
                 Thread.sleep(7);
             } catch (Exception e) {
@@ -86,10 +93,17 @@ public class AnimationTest {
             }
 
 
-            g.setColor(Color.black);
-            g.fillRect(0, 0, this.getWidth(), this.getHeight());
+
             g.setColor(circleColor);
             g.fillOval(x, y, 40, 40);
+        }
+    }
+    class backgroundDrawer extends JPanel {
+        @Override
+        protected void paintComponent(Graphics g) {
+            System.out.println("debug");
+            g.setColor(Color.black);
+            g.fillRect(0, 0, this.getWidth(), this.getHeight());
         }
     }
 }
